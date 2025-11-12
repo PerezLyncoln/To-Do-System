@@ -18,8 +18,8 @@ This project is demonstrates practical integration between high-level (C) and lo
 
 Requires NASM and GCC (Windows x64):
 ```powershell
-nasm -f win64 math.asm -o math.obj
-gcc main.c math.obj -o todo.exe
+nasm -f win64 main.asm -o main.obj
+gcc main.c main.obj -o todo.exe
 ```
 
 ## Running the Program

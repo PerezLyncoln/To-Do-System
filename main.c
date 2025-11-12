@@ -118,13 +118,17 @@ int main(int argc, char **argv) {
 
     char input[256];
     while (1) {
-        printf("\nTodo Menu:\n");
+        printf("\n");
+        printf("================================================\n");
+        printf("                   TODO MENU\n");
+        printf("================================================\n");
         printf("1) Add task\n");
         printf("2) List tasks\n");
         printf("3) Remove task\n");
         printf("4) Quit (saves to todos.txt)\n");
         printf("5) Edit task text\n");
         printf("6) Set priority\n");
+        printf("================================================\n");
         printf("> ");
         if (!fgets(input, sizeof(input), stdin)) break;
 
@@ -144,6 +148,10 @@ int main(int argc, char **argv) {
             else printf("Todo list is full.\n");
         } else if (choice == 2) {
             long cnt = get_count();
+            printf("\n");
+            printf("================================================\n");
+            printf("                   TASK LIST\n");
+            printf("================================================\n");
             printf("Total tasks: %ld\n", cnt);
             for (long i = 0; i < cnt; ++i) {
                 char buf[128];
@@ -152,9 +160,10 @@ int main(int argc, char **argv) {
                     long t = get_timestamp(i);
                     char tbuf[64];
                     format_time(t, tbuf, sizeof(tbuf));
-                    printf("%ld: [%ld] %s (ts=%s)\n", i, p, buf, tbuf);
+                    printf("%ld: [Priority %ld] %s (ts=%s)\n", i, p, buf, tbuf);
                 }
             }
+            printf("================================================\n");
         } else if (choice == 3) {
             printf("Index to remove: ");
             if (!fgets(input, sizeof(input), stdin)) break;

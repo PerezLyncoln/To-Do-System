@@ -1,3 +1,20 @@
+; Todo-list backend (NASM) for Windows x64
+; Record layout per slot:
+; offset 0: priority (byte, 0 = empty)
+; offset 1: timestamp (qword)
+; offset 9: text area (TEXT_SIZE bytes, null-terminated)
+;
+; Exports:
+; init_todo()
+; add_todo(const char *text, long priority, long timestamp) -> 0 success, -1 full
+; get_count() -> number of tasks
+; get_task(index, outbuf, bufsize) -> 0 success, -1 invalid
+; get_priority(index) -> priority (0-255) or -1 invalid
+; get_timestamp(index) -> timestamp (qword) or -1
+; update_task(index, newtext) -> 0 success, -1 invalid
+; set_priority(index, priority) -> 0 success, -1 invalid
+; remove_todo(index) -> 0 success, -1 invalid
+
 global init_todo
 global add_todo
 global get_count
